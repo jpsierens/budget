@@ -1,0 +1,138 @@
+@import 'reset';
+
+
+body {
+	padding: 3%;
+	margin: 0 auto;
+	max-width: 720px;
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: beige;
+}
+
+h1 {
+	padding: 5px 0;
+	font-size: 26px;
+	text-align: center;
+}
+
+input,
+textarea {
+	display: inline-block;
+	vertical-align: middle;
+	border-radius: 3px;
+	border: none;
+}
+
+button {
+    height: 26px;
+    padding: 0 12px;
+    color: white;
+    font-weight: bold;
+	text-transform: uppercase;
+	background: #cec3bf;
+    border: 0;
+    border-radius: 3px;
+	cursor: pointer;
+}
+
+.removeLinkDecoration {
+	text-decoration: none;
+}
+
+form {
+	margin: 10px 0;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #cec3bf;
+}
+
+.create-budget {
+	input,
+	textarea {
+		height: 20px;
+		margin: 5px 5px;
+		padding: 3px;
+	}
+}
+
+.budgets {
+	padding: 20px 0;
+	background-color: beige;
+}
+
+.budget {
+	position: relative;
+	margin: 10px 0;
+	padding: 10px 45px 10px 10px;
+	background: white;
+	border-radius: 5px;
+	overflow: hidden;
+	
+	&>a {
+		text-decoration: none;
+	}
+	h2 {
+    	margin: 10px 0;
+		color: #111;
+		font-size: 20px;
+	}
+	p {
+		margin: 10px 0;
+    	color: #2f2f2f;
+	}
+	.datetime {
+		margin-left: 20px;
+		color: gray;
+		font-style: italic;
+	}
+	.close-budget {
+		position: absolute;
+		top: 20px;
+		right: 20px;
+		cursor: pointer;
+	}
+	&.done {
+		background: #cefdb1;
+	}
+	&.dragging {
+		opacity: 0.2;
+	}
+}
+
+.budget-detail {
+	input,
+	textarea {
+		display: block;
+		margin-bottom: 10px;
+		border: 1px solid #AAA;
+	}
+	input {
+		height: 20px;
+	}
+	.btn-save {
+		display: block;
+		float: right;
+		margin-top: 10px;
+	}
+}
+
+.about {
+	padding: 50px 0;
+	text-align: center;
+
+	.github {
+		margin: 30px auto 0;
+
+		iframe {
+		    width: 76px;
+    		height: 30px;
+		}
+	}
+}
+
+footer {
+	margin-top: 20px;
+
+	a {
+		padding: 5px 10px 5px 0;
+	}
+}
