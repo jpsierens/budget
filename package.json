@@ -9,7 +9,8 @@
     "build": "rimraf dist && node_modules/.bin/webpack --config ./webpack.production.config.js --progress --profile --colors",
     "eslint": "eslint .",
     "test": "mocha --compilers js:babel-register --recursive",
-    "test:watch": "npm test -- --watch"
+    "test:watch": "npm test -- --watch",
+    "flow": "./node_modules/.bin/flow"
   },
   "dependencies": {
     "babel-eslint": "^6.0.4",
@@ -47,6 +48,7 @@
     "eslint-plugin-react": "^5.0.1",
     "expect": "^1.20.2",
     "extract-text-webpack-plugin": "^1.0.1",
+    "flow-bin": "^0.32.0",
     "html-webpack-plugin": "^2.16.1",
     "json-loader": "^0.5.4",
     "mocha": "^3.0.2",
