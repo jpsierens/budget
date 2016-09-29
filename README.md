@@ -1,2 +1,4 @@
 # budget
-App for managing budgets
+> App for managing budgets
+
+Under construction

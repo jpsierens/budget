@@ -1,7 +1,10 @@
+// @flow
 import { takeEvery } from 'redux-saga';
 import { put, call } from 'redux-saga/effects';
-import { postBudget, deleteBudget, putBudget } from '../api';
+
 import * as types from './types';
+import { postBudget, deleteBudget, putBudget } from '../api';
+import { addBudgetActionType, removeBudgetActionType, updateBudgetActionType } from '../types';
 
 function* handleServerResponse(budget, success, failed, errorMsg, additional = {}) {
     if (budget && budget.name) {
@@ -11,7 +14,7 @@ function* handleServerResponse(budget, success, failed, errorMsg, additional = {
     }
 }
 
-export function* addBudget(action) {
+export function* addBudget(action: addBudgetActionType) {
     try {
         const budget = yield call(postBudget, action.data);
 
@@ -33,7 +36,7 @@ function* watchAddBudget() {
     yield* takeEvery(types.ADD_BUDGET_CLICK, addBudget);
 }
 
-export function* removeBudget(action) {
+export function* removeBudget(action: removeBudgetActionType) {
     try {
         const budget = yield call(deleteBudget, action.id);
 
@@ -55,7 +58,7 @@ function* watchRemoveBudget() {
     yield* takeEvery(types.REMOVE_BUDGET_CLICK, removeBudget);
 }
 
-export function* updateBudget(action) {
+export function* updateBudget(action: updateBudgetActionType) {
     try {
         const { id, updates } = action;
         const budget = yield call(putBudget, id, updates);

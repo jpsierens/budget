@@ -1,10 +1,6 @@
 // @flow
 import * as types from './types';
-
-type addBudgetType = {
-    name: string,
-    note: string
-};
+import { addBudgetType, moveBudgetType } from '../types';
 
 export function addBudget(budget: addBudgetType) {
     return {
@@ -27,15 +23,6 @@ export function updateBudget(id: string, updates: Object) {
         id
     };
 }
-
-type moveBudgetType = {
-    __v: number,
-    _id: string,
-    completed: boolean,
-    updatedAt: string,
-    name: string,
-    note: string
-};
 
 export function moveBudget(dragIndex: number, hoverIndex: number, budget: moveBudgetType) {
     return {

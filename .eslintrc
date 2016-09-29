@@ -8,7 +8,9 @@
   "globals": {
     "expect": true,
     "sinon": true,
-    "__DEV__": true
+    "__DEV__": true,
+    // Eslint doesn't like Generator Type
+    "Generator": true
   },
   "ecmaFeatures": {
     "arrowFunctions": true,
@@ -187,6 +189,7 @@
     "react/wrap-multilines": 2
   },
   "plugins": [
-    "react"
+    "react",
+    "flowtype"
   ]
 }
