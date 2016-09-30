@@ -14,7 +14,7 @@ function* handleServerResponse(budget, success, failed, errorMsg, additional = {
     }
 }
 
-export function* addBudget(action: addBudgetActionType) {
+export function* addBudget(action: addBudgetActionType): Generator<any, void, any> {
     try {
         const budget = yield call(postBudget, action.data);
 
@@ -36,7 +36,7 @@ function* watchAddBudget() {
     yield* takeEvery(types.ADD_BUDGET_CLICK, addBudget);
 }
 
-export function* removeBudget(action: removeBudgetActionType) {
+export function* removeBudget(action: removeBudgetActionType): Generator<any, void, any> {
     try {
         const budget = yield call(deleteBudget, action.id);
 
@@ -58,7 +58,7 @@ function* watchRemoveBudget() {
     yield* takeEvery(types.REMOVE_BUDGET_CLICK, removeBudget);
 }
 
-export function* updateBudget(action: updateBudgetActionType) {
+export function* updateBudget(action: updateBudgetActionType): Generator<any, void, any> {
     try {
         const { id, updates } = action;
         const budget = yield call(putBudget, id, updates);
@@ -83,7 +83,7 @@ function* watchUpdateBudget() {
 }
 
 // single entry point to start all Sagas at once
-export default function* rootSaga() {
+export default function* rootSaga(): Generator<any, void, void> {
     yield [
         watchAddBudget(),
         watchRemoveBudget(),

@@ -1,7 +1,8 @@
-import React, { PropTypes } from 'react';
+// @flow
+import React from 'react';
 import { Link } from 'react-router';
 
-const App = ({ children }) =>
+const App = ({ children }: { children: Object }) =>
     <div>
         <h1>Budgets</h1>
         { children }
@@ -10,9 +11,5 @@ const App = ({ children }) =>
             <Link to="/about">About</Link>
         </footer>
     </div>;
-
-App.propTypes = {
-    children: PropTypes.object
-};
 
 export default App;

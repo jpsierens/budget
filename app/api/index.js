@@ -1,4 +1,6 @@
+// @flow
 import fetch from 'isomorphic-fetch';
+import { addBudgetActionType, updateBudgetActionType } from '../types';
 
 const BUDGET_URL = 'http://localhost:3001/budgets';
 const jsonHeaders = {
@@ -17,7 +19,7 @@ export async function getBudgets() {
     }
 }
 
-export async function postBudget(budget) {
+export async function postBudget(budget: addBudgetActionType) {
     try {
         const options = {
             mode: 'cors',
@@ -34,7 +36,7 @@ export async function postBudget(budget) {
     }
 }
 
-export async function putBudget(id, update) {
+export async function putBudget(id: string, update: updateBudgetActionType) {
     try {
         const options = {
             mode: 'cors',
@@ -51,7 +53,7 @@ export async function putBudget(id, update) {
     }
 }
 
-export async function deleteBudget(id) {
+export async function deleteBudget(id: string) {
     try {
         const options = {
             mode: 'cors',

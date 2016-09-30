@@ -1,68 +1,21 @@
-import React, { PropTypes } from 'react';
-import { findDOMNode } from 'react-dom';
-import { DragSource, DropTarget } from 'react-dnd';
+import React from 'react';
 import { Link } from 'react-router';
 import handleUpdateItem from '../helpers/handleUpdateItem';
+import withListDragAndDrop from '../helpers/withListDragAndDrop';
 
-const budgetSource = {
-    beginDrag(props) {
-        return { props };
-    }
+type Props = {
+    _id: string,
+    index: number,
+    name: string,
+    note: string,
+    completed: boolean,
+    updatedAt: string,
+    onRemove: () => void,
+    updateBudget: () => void,
+    isDragging: boolean,
 };
 
-const budgetTarget = {
-    hover(props, monitor, component) {
-        const dragIndex = monitor.getItem().index;
-        const hoverIndex = props.index;
-
-        // Don't replace items with themselves
-        if (dragIndex === hoverIndex) {
-            return;
-        }
-
-        // Determine rectangle on screen
-        const hoverBoundingRect = findDOMNode(component).getBoundingClientRect();
-
-        // Get vertical middle
-        const hoverMiddleY = (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
-
-        // Determine mouse position
-        const clientOffset = monitor.getClientOffset();
-
-        // Get pixels to the top
-        const hoverClientY = clientOffset.y - hoverBoundingRect.top;
-
-        // Dragging downwards
-        if (dragIndex < hoverIndex && hoverClientY < hoverMiddleY) {
-            return;
-        }
-
-        // Dragging upwards
-        if (dragIndex > hoverIndex && hoverClientY > hoverMiddleY) {
-            return;
-        }
-
-        // Time to actually perform the action
-        if (dragIndex !== undefined && hoverIndex !== undefined) {
-            props.onMoveBudget({ dragIndex, hoverIndex });
-        }
-
-        monitor.getItem().index = hoverIndex;
-    }
-};
-
-const connectDrag = (connect, monitor) => {
-    return {
-        connectDragSource: connect.dragSource(),
-        isDragging: monitor.isDragging()
-    };
-};
-
-const connectDrop = (connect) => {
-    return { connectDropTarget: connect.dropTarget() };
-};
-
-const Budget = (props) => {
+const Budget = (props: Props) => {
     const {
         _id,
         index,
@@ -72,14 +25,12 @@ const Budget = (props) => {
         updatedAt,
         onRemove,
         updateBudget,
-        connectDragSource,
-        isDragging,
-        connectDropTarget
+        isDragging
     } = props;
 
     const time = new Date(updatedAt);
 
-    return connectDragSource(connectDropTarget(
+    return (
         <div className={`budget ${ completed ? 'done' : ''} ${isDragging ? 'dragging' : ''}`}>
             <Link to={`/${index}`}>
                 <h2> { name } </h2>
@@ -108,29 +59,7 @@ const Budget = (props) => {
                 </span>
             </Link>
         </div>
-    ));
+    );
 };
 
-Budget.propTypes = {
-    _id: PropTypes.string,
-    index: PropTypes.number,
-    name: PropTypes.string,
-    note: PropTypes.string,
-    completed: PropTypes.bool,
-    updatedAt: PropTypes.string,
-    onRemove: PropTypes.func,
-    updateBudget: PropTypes.func,
-    connectDragSource: PropTypes.func,
-    isDragging: PropTypes.bool,
-    connectDropTarget: PropTypes.func,
-    onMoveBudget: PropTypes.func
-};
-
-const decorateWithDrag = (component) => {
-    return DragSource('Budget', budgetSource, connectDrag)(component);
-};
-const decorateWithDrop = (component) => {
-    return DropTarget('Budget', budgetTarget, connectDrop)(component);
-};
-
-export default decorateWithDrop(decorateWithDrag(Budget));
+export default withListDragAndDrop(Budget);
