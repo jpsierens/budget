@@ -1,7 +1,9 @@
-import React, { PropTypes } from 'react';
+// @flow
+import React from 'react';
 import { withRouter } from 'react-router';
 import handleUpdateItem from '../helpers/handleUpdateItem';
 import withExit from '../helpers/withExit';
+import { BudgetType } from '../types';
 import * as rules from '../rules';
 
 const handleSave = (router, nameInput, noteInput, params) => {
@@ -18,7 +20,14 @@ const handleSave = (router, nameInput, noteInput, params) => {
     withExit(handleUpdateItem)(router, '/', params);
 };
 
-const BudgetDetail = ({ budget, updateBudget, onRemove, router }) => {
+type Props = {
+    budget: BudgetType,
+    onRemove: () => void,
+    updateBudget: () => void,
+    router: Object
+};
+
+const BudgetDetail = ({ budget, updateBudget, onRemove, router }: Props) => {
     const { name, note, _id, completed, updatedAt } = budget;
     const time = new Date(updatedAt);
 
@@ -74,13 +83,5 @@ const BudgetDetail = ({ budget, updateBudget, onRemove, router }) => {
         </div>
     );
 };
-
-BudgetDetail.propTypes = {
-    budget: PropTypes.object,
-    onRemove: PropTypes.func,
-    updateBudget: PropTypes.func,
-    router: PropTypes.object
-};
-
 
 export default withRouter(BudgetDetail);

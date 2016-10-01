@@ -1,8 +1,10 @@
-import React, { PropTypes } from 'react';
+// @flow
+import React from 'react';
 import Budget from './Budget';
 import CreateBudget from './CreateBudget';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
+import { BudgetType } from '../types';
 
 const handleMoveBudget = (budgets, moveBudget, indexes) => {
     const { dragIndex, hoverIndex } = indexes;
@@ -10,7 +12,17 @@ const handleMoveBudget = (budgets, moveBudget, indexes) => {
     return moveBudget(dragIndex, hoverIndex, budgets[dragIndex]);
 };
 
+type Props = {
+    budgets: BudgetType[],
+    onAddBudget: () => void,
+    onRemoveBudget: () => void,
+    updateBudget: () => void,
+    moveBudget: () => void
+};
+
 class Budgets extends React.Component {
+    props: Props;
+
     render() {
         const { budgets, onAddBudget, onRemoveBudget, updateBudget, moveBudget } = this.props;
 
@@ -34,13 +46,5 @@ class Budgets extends React.Component {
         );
     }
 }
-
-Budgets.propTypes = {
-    budgets: PropTypes.array,
-    onAddBudget: PropTypes.func,
-    onRemoveBudget: PropTypes.func,
-    updateBudget: PropTypes.func,
-    moveBudget: PropTypes.func
-};
 
 export default DragDropContext(HTML5Backend)(Budgets);

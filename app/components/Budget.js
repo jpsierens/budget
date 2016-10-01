@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import { Link } from 'react-router';
 import handleUpdateItem from '../helpers/handleUpdateItem';

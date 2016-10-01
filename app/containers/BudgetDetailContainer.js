@@ -1,3 +1,4 @@
+// @flow
 import { connect } from 'react-redux';
 import { removeBudget, updateBudget } from '../actions';
 import BudgetDetail from '../components/BudgetDetail';

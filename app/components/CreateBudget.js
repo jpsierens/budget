@@ -1,3 +1,4 @@
+// @flow
 import React, { PropTypes } from 'react';
 import * as rules from '../rules';
 
@@ -12,7 +13,7 @@ const handleFormSubmit = (nameInput, noteInput, onCreate) => {
     noteInput.value = '';
 };
 
-const CreateBudget = ({ onCreate }) => {
+const CreateBudget = ({ onCreate }: { onCreate: () => void}) => {
     let nameInput;
     let noteInput;
 

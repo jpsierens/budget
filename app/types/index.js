@@ -3,7 +3,7 @@ export type addBudgetType = {
     note: string
 };
 
-export type moveBudgetType = {
+export type BudgetType = {
     __v: number,
     _id: string,
     completed: boolean,
