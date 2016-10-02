@@ -3,13 +3,22 @@ export type addBudgetType = {
     note: string
 };
 
+export type TransactionType = {
+    __v: number,
+    _id: string,
+    expense: boolean,
+    amount: number,
+    date: string
+};
+
 export type BudgetType = {
     __v: number,
     _id: string,
     completed: boolean,
     updatedAt: string,
     name: string,
-    note: string
+    note: string,
+    transactions: TransactionType[]
 };
 
 export type addBudgetActionType = {
