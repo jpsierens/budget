@@ -63,13 +63,25 @@ const BudgetDetail = ({ budget, updateBudget, onRemove, router }: Props) => {
                 <span className="datetime">
                     Last Updated: { time.toLocaleString() }
                 </span>
-            </div>
-            <button
-                className="btn-save"
-                onClick={(e) => handleSave(router, nameInput, noteInput, [e, updateBudget, _id])}>
+                <button
+                    className="btn-save"
+                    onClick={(e) => handleSave(router, nameInput, noteInput, [e, updateBudget, _id])}>
 
-                SAVE
-            </button>
+                    SAVE
+                </button>
+            </div>
+
+            <hr />
+
+            <section className="transactions">
+                <h2>Transactions</h2>
+                <div className="transaction">
+                    <div>9/30/2016</div>
+                    <div>Some description of a bought item</div>
+                    <div>$15.00</div>
+                </div>
+            </section>
+
             <span
                 className="close-budget"
                 onClick={(e) => {

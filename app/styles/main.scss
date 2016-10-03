@@ -42,7 +42,6 @@ button {
 form {
 	margin: 10px 0;
 	padding-bottom: 10px;
-	border-bottom: 1px solid #cec3bf;
 }
 
 .create-budget {
@@ -111,7 +110,34 @@ form {
 	.btn-save {
 		display: block;
 		float: right;
-		margin-top: 10px;
+	}
+}
+
+.transactions {
+	h2 {
+		padding: 10px;
+		text-align: center;
+	}
+}
+
+.transaction {
+	padding: 5px;
+	background: white;
+	border-radius: 3px;
+
+	&>div {
+		display: inline-block;
+	}
+	&>div:first-child {
+		width: 20%;
+		text-align: center;
+	}
+	&>div:nth-child(2) {
+		width: 60%;
+	}
+	&>div:nth-child(3) {
+		width: 20%;
+		text-align: center;
 	}
 }
 
