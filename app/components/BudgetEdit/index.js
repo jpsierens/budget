@@ -41,8 +41,6 @@ class BudgetEdit extends React.Component {
         let nameInput;
         let noteInput;
 
-        console.log(this.state);
-
         return (
             <div>
                 { (edit) ?
@@ -95,7 +93,6 @@ class BudgetEdit extends React.Component {
                             className="btn-edit"
                             onClick={() => {
                                 this.setState({ edit: true });
-                                console.log(this.state);
                             }}>
 
                             EDIT
