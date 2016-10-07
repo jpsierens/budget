@@ -3,6 +3,7 @@ import React from 'react';
 import { withRouter } from 'react-router';
 import { BudgetType } from '../types';
 import BudgetEdit from './BudgetEdit';
+import Transactions from './Transactions';
 
 type Props = {
     budget: BudgetType,
@@ -20,20 +21,7 @@ const BudgetDetail = (props: Props) => {
 
             <hr />
 
-            <section className="transactions">
-                <h2>Transactions</h2>
-                <div className="transaction">
-                    <div>9/30/2016</div>
-                    <div>Some description of a bought item</div>
-                    <div>$15.00</div>
-                </div>
-                <button
-                    className="btn-create"
-                    onClick={() => {}}>
-
-                    CREATE
-                </button>
-            </section>
+            <Transactions />
 
             <span
                 className="close-budget"
