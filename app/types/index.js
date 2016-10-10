@@ -8,7 +8,8 @@ export type TransactionType = {
     _id: string,
     expense: boolean,
     amount: number,
-    date: string
+    date: string,
+    description: string
 };
 
 export type BudgetType = {
