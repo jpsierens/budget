@@ -6,12 +6,10 @@ export default class Transactions extends React.Component {
     };
 
     handleCreateClick() {
-        console.log('hola');
         this.setState({ create: true });
     }
 
     handleSaveClick() {
-        console.log('adios');
         this.setState({ create: false });
     }
 
