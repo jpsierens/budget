@@ -21,24 +21,36 @@ const TransactionForm = () => {
 
     return (
         <form>
+            <label>Date</label>
             <input
                 type="date"
                 ref={(e) => { form.date = e; }} />
+            <label>Description</label>
             <textarea
                 ref={(e) => { form.description = e; }} />
+            <label>Amount</label>
             <input
-                type="number"
+                type="text"
                 ref={(e) => { form.amount = e; }} />
-            <checkbox
-                name="Income"
+            <label style={{ display: 'inline' }}>Income?</label>
+            <input
+                type="checkbox"
+                style={{ display: 'inline' }}
                 ref={(e) => { form.income = e; }} />
+            <label>Category</label>
             <select
                 ref={(e) => { form.category = e; }}>
 
                 <option value="other">Other</option>
             </select>
             <button
-                onClick={() => { handleSubmit(form); }} />
+                onClick={(e) => {
+                    e.preventDefault();
+                    handleSubmit(form);
+                }}>
+
+                Submit
+            </button>
         </form>
     );
 };
@@ -57,6 +69,7 @@ export default class Transactions extends React.Component {
     }
 
     render() {
+        const { create } = this.state;
         const btnCreate = (<button
             className="btn-create"
             onClick={() => { this.handleCreateClick(); }}>
@@ -79,8 +92,9 @@ export default class Transactions extends React.Component {
                     <div>Some description of a bought item</div>
                     <div>$15.00</div>
                 </div>
-                { (this.state.create) ? TransactionForm : null }
-                { (this.state.create) ? btnSave : btnCreate }
+
+                { (create) ? <TransactionForm /> : null }
+                { (create) ? btnSave : btnCreate }
             </section>
         );
     }
