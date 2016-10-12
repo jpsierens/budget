@@ -8,11 +8,12 @@ import Transactions from './Transactions';
 type Props = {
     budget: BudgetType,
     onRemove: () => void,
+    updateBudget: () => void,
     router: Object
 };
 
 const BudgetDetail = (props: Props) => {
-    const { budget, onRemove, router } = props;
+    const { budget, onRemove, router, updateBudget } = props;
     const { _id, completed } = budget;
 
     return (
@@ -21,7 +22,7 @@ const BudgetDetail = (props: Props) => {
 
             <hr />
 
-            <Transactions />
+            <Transactions budget={budget} updateBudget={updateBudget} />
 
             <span
                 className="close-budget"

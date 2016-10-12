@@ -1,4 +1,5 @@
 import React from 'react';
+import { BudgetType } from '../types';
 
 const handleSubmit = (data) => {
     const { date, description, amount, income, category } = data;
@@ -20,13 +21,15 @@ const TransactionForm = () => {
     };
 
     return (
-        <form>
+        <form className="transaction-form">
             <label>Date</label>
             <input
                 type="date"
                 ref={(e) => { form.date = e; }} />
             <label>Description</label>
             <textarea
+                rows="10"
+                cols="50"
                 ref={(e) => { form.description = e; }} />
             <label>Amount</label>
             <input
@@ -55,10 +58,17 @@ const TransactionForm = () => {
     );
 };
 
+type Props = {
+    budget: BudgetType,
+    updateBudget: () => void
+};
+
 export default class Transactions extends React.Component {
     state = {
         create: false
     };
+
+    props: Props;
 
     handleCreateClick() {
         this.setState({ create: true });
@@ -70,6 +80,7 @@ export default class Transactions extends React.Component {
 
     render() {
         const { create } = this.state;
+        const { budget } = this.props;
         const btnCreate = (<button
             className="btn-create"
             onClick={() => { this.handleCreateClick(); }}>
@@ -77,11 +88,11 @@ export default class Transactions extends React.Component {
             CREATE
         </button>);
 
-        const btnSave = (<button
+        const btnDiscard = (<button
             className="btn-create"
             onClick={() => { this.handleSaveClick(); }}>
 
-            SAVE
+            DISCARD
         </button>);
 
         return (
@@ -93,8 +104,8 @@ export default class Transactions extends React.Component {
                     <div>$15.00</div>
                 </div>
 
-                { (create) ? <TransactionForm /> : null }
-                { (create) ? btnSave : btnCreate }
+                { (create) ? <TransactionForm budget={budget} /> : null }
+                { (create) ? btnDiscard : btnCreate }
             </section>
         );
     }
