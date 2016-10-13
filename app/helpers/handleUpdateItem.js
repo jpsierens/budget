@@ -1,6 +1,7 @@
 // @flow
-const handleUpdateItem = (e: Object, update: () => void, _id: string, changes: Object) => {
-    e.preventDefault();
+const handleUpdateItem = (update: () => void, _id: string, changes: Object, e: Object) => {
+    if (e) e.preventDefault();
+
     const now = new Date();
     const updatedAt = now.toISOString();
 

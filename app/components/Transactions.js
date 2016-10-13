@@ -1,17 +1,39 @@
 import React from 'react';
 import { BudgetType } from '../types';
+import handleUpdateItem from '../helpers/handleUpdateItem';
 
-const handleSubmit = (data) => {
-    const { date, description, amount, income, category } = data;
+const handleSubmit = (e, data, updateBudget, budget) => {
+    e.preventDefault();
 
-    if ( !date && !description && !amount && !income && !category ) {
-        return alert('Please fill all fields');
-    }
+    // check for empty fields
+    const dataKeys = Object.keys(data);
+    const invalids = dataKeys.filter((key) => data[key].value === '');
+    if (invalids.length) return alert('Please fill all fields');
+
+    const { _id, transactions } = budget;
+    const formValues = {};
+
+    // create an object with the actual values
+    dataKeys.forEach((key) => { formValues[key] = data[key].value; });
+
+    handleUpdateItem(updateBudget, _id, {
+        transactions: [...transactions, formValues]
+    });
+
+    // reset form
+    data.date.value = '';
+    data.description.value = '';
+    data.amount.value = '';
 
     return true;
 };
 
-const TransactionForm = () => {
+type Props = {
+    budget: BudgetType,
+    updateBudget: () => void
+};
+
+const TransactionForm = ({ updateBudget, budget, onDone } = Props) => {
     let form = {
         date: '',
         description: '',
@@ -48,19 +70,14 @@ const TransactionForm = () => {
             </select>
             <button
                 onClick={(e) => {
-                    e.preventDefault();
-                    handleSubmit(form);
+                    handleSubmit(e, form, updateBudget, budget);
+                    onDone();
                 }}>
 
                 Submit
             </button>
         </form>
     );
-};
-
-type Props = {
-    budget: BudgetType,
-    updateBudget: () => void
 };
 
 export default class Transactions extends React.Component {
@@ -74,7 +91,7 @@ export default class Transactions extends React.Component {
         this.setState({ create: true });
     }
 
-    handleSaveClick() {
+    handleDiscardClick() {
         this.setState({ create: false });
     }
 
@@ -90,21 +107,30 @@ export default class Transactions extends React.Component {
 
         const btnDiscard = (<button
             className="btn-create"
-            onClick={() => { this.handleSaveClick(); }}>
+            onClick={() => { this.handleDiscardClick(); }}>
 
             DISCARD
         </button>);
 
+        const transactions = budget.transactions.map((t) => (
+            <div className="transaction">
+                <div>{ t.date }</div>
+                <div>{ t.description }</div>
+                <div>{ t.amount }</div>
+            </div>
+        ));
+
         return (
             <section className="transactions">
                 <h2>Transactions</h2>
-                <div className="transaction">
-                    <div>9/30/2016</div>
-                    <div>Some description of a bought item</div>
-                    <div>$15.00</div>
-                </div>
 
-                { (create) ? <TransactionForm budget={budget} /> : null }
+                { transactions }
+
+                { (create) ?
+                    <TransactionForm onDone={this.handleDiscardClick.bind(this)} {...this.props} />
+                    :
+                    null
+                }
                 { (create) ? btnDiscard : btnCreate }
             </section>
         );

@@ -39,9 +39,9 @@ const Budget = (props: Props) => {
                 <div>
                     <button
                         className="btn-status"
-                        onClick={(e) => handleUpdateItem(e, updateBudget, _id, {
+                        onClick={(e) => handleUpdateItem(updateBudget, _id, {
                             completed: !completed
-                        })}>
+                        }, e)}>
 
                         Status: { completed ? 'Done' : 'Not Done'}
                     </button>

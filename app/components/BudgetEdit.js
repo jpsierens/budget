@@ -64,7 +64,7 @@ class BudgetEdit extends React.Component {
         const btnSave = (<button
             className="btn-save"
             onClick={(e) => {
-                handleSave(nameInput, noteInput, [e, updateBudget, _id]);
+                handleSave(nameInput, noteInput, [updateBudget, _id, e]);
                 this.setState({ edit: false });
             }}>
 
@@ -87,9 +87,9 @@ class BudgetEdit extends React.Component {
                 <div>
                     <button
                         className="btn-status"
-                        onClick={(e) => handleUpdateItem(e, updateBudget, _id, {
+                        onClick={(e) => handleUpdateItem(updateBudget, _id, {
                             completed: !completed
-                        })}>
+                        }, e)}>
 
                         Status: { completed ? 'Done' : 'Not Done'}
                     </button>
