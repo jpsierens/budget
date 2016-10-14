@@ -1,5 +1,5 @@
 // @flow
-import React, { PropTypes } from 'react';
+import React from 'react';
 import * as rules from '../rules';
 
 const handleFormSubmit = (nameInput, noteInput, onCreate) => {
@@ -48,10 +48,6 @@ const CreateBudget = ({ onCreate }: { onCreate: () => void}) => {
             </button>
         </form>
     );
-};
-
-CreateBudget.propTypes = {
-    onCreate: PropTypes.func
 };
 
 export default CreateBudget;

@@ -4,7 +4,6 @@ export type addBudgetType = {
 };
 
 export type TransactionType = {
-    __v: number,
     _id: string,
     expense: boolean,
     amount: number,
