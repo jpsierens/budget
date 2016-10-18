@@ -51,7 +51,9 @@ export default class Transactions extends React.Component {
             <section className="transactions">
                 <h2>Transactions</h2>
 
-                { transactions }
+                <div className="transaction-list">
+                    { transactions }
+                </div>
 
                 { (create) ?
                     <TransactionForm onDone={this.handleDiscardClick.bind(this)} {...this.props} />

@@ -131,13 +131,21 @@ form {
 .transaction {
 	display: flex;
 	justify-content: space-between;
-	padding: 5px;
     border: 1px solid;
-	
+	border-bottom: none;
+
+	&:last-child {
+		border-bottom: 1px solid;
+	}
+	&>div {
+		padding: 5px;
+	}
 	&>div:first-child {
 		flex: 1;
 	}
 	&>div:nth-child(2) {
+		border-left: 1px solid;
+		border-right: 1px solid;
 		flex: 2;
 	}
 	&>div:nth-child(3) {
