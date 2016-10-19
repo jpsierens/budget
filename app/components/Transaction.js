@@ -1,5 +1,4 @@
 import React from 'react';
-import withListDragAndDrop from '../helpers/withListDragAndDrop';
 
 type Props = {
 	date: string,
@@ -15,4 +14,4 @@ const Transaction = ({ date, description, amount, isDragging } = Props) =>
         <div>{ amount }</div>
     </div>;
 
-export default withListDragAndDrop(Transaction);
+export default Transaction;

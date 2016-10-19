@@ -2,8 +2,6 @@ import React from 'react';
 import { BudgetType } from '../types';
 import TransactionForm from './TransactionForm';
 import Transaction from './Transaction';
-import { DragDropContext } from 'react-dnd';
-import HTML5Backend from 'react-dnd-html5-backend';
 
 type Props = {
     budget: BudgetType,
@@ -42,7 +40,19 @@ class Transactions extends React.Component {
             DISCARD TRANSACTION
         </button>);
 
-        const transactions = budget.transactions.map((t) => (
+        // sort the transactions by date
+        const sortedTransactions = [...budget.transactions];
+        sortedTransactions.sort((a, b) => {
+            if (a.date < b.date) {
+                return -1;
+            }
+            if (a.date > b.date) {
+                return 1;
+            }
+            return 0;
+        });
+
+        const transactions = sortedTransactions.map((t) => (
             <Transaction {...t} key={t._id} />
         ));
 
@@ -71,5 +81,5 @@ class Transactions extends React.Component {
     }
 }
 
-export default DragDropContext(HTML5Backend)(Transactions);
+export default Transactions;
 
