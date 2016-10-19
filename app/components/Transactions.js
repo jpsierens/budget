@@ -56,7 +56,9 @@ class Transactions extends React.Component {
                     <div>AMOUNT</div>
                 </div>
 
-                { transactions }
+                <div className="transaction-list">
+                    { transactions }
+                </div>
 
                 { (create) ?
                     <TransactionForm onDone={this.handleDiscardClick.bind(this)} {...this.props} />
