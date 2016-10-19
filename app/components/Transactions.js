@@ -1,13 +1,16 @@
 import React from 'react';
 import { BudgetType } from '../types';
 import TransactionForm from './TransactionForm';
+import Transaction from './Transaction';
+import { DragDropContext } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
 
 type Props = {
     budget: BudgetType,
     updateBudget: () => void
 };
 
-export default class Transactions extends React.Component {
+class Transactions extends React.Component {
     state = {
         create: false
     };
@@ -40,16 +43,18 @@ export default class Transactions extends React.Component {
         </button>);
 
         const transactions = budget.transactions.map((t) => (
-            <div className="transaction">
-                <div>{ t.date }</div>
-                <div>{ t.description }</div>
-                <div>{ t.amount }</div>
-            </div>
+            <Transaction {...t} key={t._id} />
         ));
 
         return (
             <section className="transactions">
                 <h2>Transactions</h2>
+
+                <div className="transaction">
+                    <div>DATE</div>
+                    <div>DESCRIPTION</div>
+                    <div>AMOUNT</div>
+                </div>
 
                 { transactions }
 
@@ -63,3 +68,6 @@ export default class Transactions extends React.Component {
         );
     }
 }
+
+export default DragDropContext(HTML5Backend)(Transactions);
+
