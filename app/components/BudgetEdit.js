@@ -64,7 +64,8 @@ class BudgetEdit extends React.Component {
         const btnSave = (<button
             className="btn-save"
             onClick={(e) => {
-                handleSave(nameInput, noteInput, [updateBudget, _id, e]);
+                e.preventDefault();
+                handleSave(nameInput, noteInput, [updateBudget, _id]);
                 this.setState({ edit: false });
             }}>
 
