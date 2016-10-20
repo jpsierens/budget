@@ -38,7 +38,7 @@ const TransactionForm = ({ updateBudget, budget, onDone } = Props) => {
         date: '',
         description: '',
         amount: '',
-        income: '',
+        expense: '',
         category: ''
     };
 
@@ -59,9 +59,19 @@ const TransactionForm = ({ updateBudget, budget, onDone } = Props) => {
                 ref={(e) => { form.amount = e; }} />
             <label style={{ display: 'inline' }}>Income?</label>
             <input
-                type="checkbox"
+                type="radio"
+                name="type"
+                value="false"
+                defaultChecked
                 style={{ display: 'inline' }}
-                ref={(e) => { form.income = e; }} />
+                ref={(e) => { form.expense = e; }} />
+            <label style={{ display: 'inline' }}>Expense?</label>
+            <input
+                type="radio"
+                name="type"
+                value="true"
+                style={{ display: 'inline' }}
+                ref={(e) => { form.expense = e; }} />
             <label>Category</label>
             <select
                 ref={(e) => { form.category = e; }}>
