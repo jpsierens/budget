@@ -131,7 +131,6 @@ form {
 .transaction {
 	display: flex;
 	justify-content: space-between;
-	padding: 10px 5px;
     border: 1px solid;
 	border-bottom: none;
 
@@ -139,7 +138,7 @@ form {
 		border-bottom: 1px solid;
 	}
 	&>div {
-		padding: 5px;
+		padding: 10px 5px;
 	}
 	&>div:first-child {
 		flex: 1;
