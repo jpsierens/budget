@@ -9,6 +9,7 @@ const cors = require('cors');
 
 const routes = require('./routes/index');
 const budgets = require('./routes/budgets');
+const transactionCategories = require('./routes/transactionCategories');
 
 const app = express();
 
@@ -28,6 +29,7 @@ app.use(cors());
 
 app.use('/', routes);
 app.use('/budgets', budgets);
+app.use('/transactionCategories', transactionCategories);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
