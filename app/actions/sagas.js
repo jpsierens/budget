@@ -3,7 +3,7 @@ import { takeEvery } from 'redux-saga';
 import { put, call } from 'redux-saga/effects';
 
 import * as types from './types';
-import { postBudget, deleteBudget, putBudget } from '../api';
+import { postBudget, deleteBudget, putBudget } from '../api/budgets';
 import { addBudgetActionType, removeBudgetActionType, updateBudgetActionType } from '../types';
 
 function* handleServerResponse(budget, success, failed, errorMsg, additional = {}) {

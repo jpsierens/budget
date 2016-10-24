@@ -5,11 +5,11 @@ import { syncHistoryWithStore } from 'react-router-redux';
 import { AppContainer } from 'react-hot-loader';
 import configureStore from './store/configureStore';
 import Root from './containers/Root';
-import { getBudgets } from './api';
+import { getInitialState } from './api';
 import './styles/main.scss';
 
-getBudgets().then((budgets) => {
-    const store = configureStore({ budgets });
+getInitialState().then((state) => {
+    const store = configureStore(state);
     const history = syncHistoryWithStore(browserHistory, store);
 
     render(

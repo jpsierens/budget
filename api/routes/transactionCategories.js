@@ -16,7 +16,7 @@ router.post('/', (req, res, next) => {
  TransactionCategory.create(req.body,  (err, tc) => {
     if (err) return next(err);
     console.log('New transactionCategories created:');
-    console.log(transactionCategories);
+    console.log(tc);
     res.json(tc);
   });
 });
@@ -42,7 +42,7 @@ router.delete('/:id', (req, res, next) => {
  TransactionCategory.findByIdAndRemove(req.params.id, req.body, (err, tc) => {
     if (err) return next(err);
     console.log('transaction category deleted:');
-    console.log(transactionCategories);
+    console.log(tc);
     res.json(tc);
   });
 });

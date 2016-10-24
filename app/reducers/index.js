@@ -34,8 +34,16 @@ const budgets = (state = [], action) => {
     }
 };
 
+const transCats = (state = [], action) => {
+    switch (action.type) {
+        default:
+            return state;
+    }
+};
+
 const rootReducer = combineReducers({
     budgets,
+    transCats,
     routing
 });
 
