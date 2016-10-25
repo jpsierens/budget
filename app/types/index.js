@@ -36,3 +36,10 @@ export type updateBudgetActionType = {
     updates: Object,
     id: string
 };
+
+export type transCatType = {
+    __v: number,
+    _id: string,
+    name: string,
+    type: string
+}

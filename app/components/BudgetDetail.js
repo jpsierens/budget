@@ -3,7 +3,7 @@ import React from 'react';
 import { withRouter } from 'react-router';
 import { BudgetType } from '../types';
 import BudgetEdit from './BudgetEdit';
-import Transactions from './Transactions';
+import TransactionsContainer from '../containers/TransactionsContainer';
 
 type Props = {
     budget: BudgetType,
@@ -22,7 +22,7 @@ const BudgetDetail = (props: Props) => {
 
             <hr />
 
-            <Transactions budget={budget} updateBudget={updateBudget} />
+            <TransactionsContainer budget={budget} updateBudget={updateBudget} />
 
             <span
                 className="close-budget"
