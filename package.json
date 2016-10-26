@@ -4,11 +4,13 @@
   "private": true,
   "scripts": {
     "start": "npm run dev",
+    "start-mobile": "node node_modules/react-native/local-cli/cli.js start",
     "api": "node ./bin/www",
     "dev": "node dev-server.js",
     "build": "rimraf dist && node_modules/.bin/webpack --config ./webpack.production.config.js --progress --profile --colors",
     "eslint": "eslint .",
     "test": "mocha --compilers js:babel-register --recursive",
+    "test-mobile": "jest",
     "test:watch": "npm test -- --watch",
     "flow": "./node_modules/.bin/flow"
   },
@@ -33,6 +35,7 @@
     "react-dnd-html5-backend": "^2.1.2",
     "react-dom": "^15.0.2",
     "react-hot-loader": "^3.0.0-beta.2",
+    "react-native": "0.36.0",
     "react-redux": "^4.4.5",
     "react-router": "^2.4.0",
     "react-router-redux": "^4.0.4",
@@ -42,6 +45,11 @@
     "autoprefixer": "^6.3.6"
   },
   "devDependencies": {
+    "babel-jest": "16.0.0",
+    "babel-preset-react-native": "1.9.0",
+    "jest": "16.0.2",
+    "jest-react-native": "16.0.0",
+    "react-test-renderer": "15.3.2",
     "babel-core": "^6.8.0",
     "babel-plugin-transform-flow-strip-types": "^6.14.0",
     "css-loader": "^0.25.0",
@@ -68,5 +76,8 @@
     "url-loader": "^0.5.7",
     "webpack": "^1.13.0",
     "webpack-dev-server": "^1.14.1"
+  },
+  "jest": {
+    "preset": "jest-react-native"
   }
 }
