@@ -30,7 +30,7 @@ class Transactions extends React.Component {
             className="btn-create"
             onClick={() => { this.handleCreateClick(); }}>
 
-            CREATE
+            CREATE TRANSACTION
         </button>);
 
         const btnDiscard = (<button
