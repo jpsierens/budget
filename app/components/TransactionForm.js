@@ -35,6 +35,8 @@ type Props = {
     onDone: () => void
 };
 
+const btnAddCatStyle = { display: 'block', marginBottom: '10px' };
+
 export default class TransactionForm extends Component {
     state = {
         transCat: 'expense',
@@ -89,6 +91,15 @@ export default class TransactionForm extends Component {
                         return <option key={t._id} value={t.name}>{t.name}</option>;
                     })}
                 </select>
+
+                <button
+                    onClick={(e)=> {
+                        e.preventDefault();
+                    }} 
+                    style={ btnAddCatStyle }>
+                    add more categories
+                </button>  
+
                 <button
                     onClick={(e) => {
                         handleSubmit(e, form, updateBudget, budget);
