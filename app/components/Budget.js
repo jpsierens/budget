@@ -39,9 +39,12 @@ const Budget = (props: Props) => {
                 <div>
                     <button
                         className="btn-status"
-                        onClick={(e) => handleUpdateItem(updateBudget, _id, {
-                            completed: !completed
-                        }, e)}>
+                        onClick={(e) => {
+                            e.preventDefault();
+                            handleUpdateItem(updateBudget, _id, {
+                                completed: !completed
+                            });
+                        }}>
 
                         Status: { completed ? 'Done' : 'Not Done'}
                     </button>

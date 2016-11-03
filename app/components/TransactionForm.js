@@ -95,10 +95,10 @@ export default class TransactionForm extends Component {
                 <button
                     onClick={(e)=> {
                         e.preventDefault();
-                    }} 
+                    }}
                     style={ btnAddCatStyle }>
                     add more categories
-                </button>  
+                </button>
 
                 <button
                     onClick={(e) => {
