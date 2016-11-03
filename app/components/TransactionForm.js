@@ -2,30 +2,41 @@ import React, { Component } from 'react';
 import { BudgetType, transCatType } from '../types';
 import handleUpdateItem from '../helpers/handleUpdateItem';
 
-const handleSubmit = (e, data, updateBudget, budget) => {
-    e.preventDefault();
+const filterInvalids = (form) => {
+    return Object.keys(form).filter((key) => {
+        form[key].value === '';
+    });
+};
 
-    // check for empty fields
-    const dataKeys = Object.keys(data);
-    const invalids = dataKeys.filter((key) => data[key].value === '');
-    if (invalids.length) return alert('Please fill all fields');
-
-    const { _id, transactions } = budget;
+const getFormValues = (form) => {
     const formValues = {};
+    Object.keys(form).forEach((key) => {
+        formValues[key] = form[key].value;
+    });
+    return formValues;
+};
 
-    // create an object with the actual values
-    dataKeys.forEach((key) => { formValues[key] = data[key].value; });
+const handleSubmit = (form, updateBudget, budget) => {
+    const { _id, transactions } = budget;
+    const invalids = filterInvalids(form);
+    const formValues = getFormValues(form);
 
-    handleUpdateItem(updateBudget, _id, {
+    // check for invalids
+    if (invalids.length) {
+        return alert('Please fill all fields');
+    }
+
+    return handleUpdateItem(updateBudget, _id, {
         transactions: [...transactions, formValues]
     });
+};
 
-    // reset form
-    data.date.value = '';
-    data.description.value = '';
-    data.amount.value = '';
-
-    return true;
+const resetForm = (form) => {
+    const newForm = Object.assign({}, form);
+    newForm.date.value = '';
+    newForm.description.value = '';
+    newForm.amount.value = '';
+    return newForm;
 };
 
 type Props = {
@@ -47,7 +58,7 @@ export default class TransactionForm extends Component {
     render() {
         const { updateBudget, budget, onDone, transCats } = this.props;
         const { transCat } = this.state;
-        const form = {};
+        let form = {};
 
         return (
             <form className="transaction-form">
@@ -102,7 +113,9 @@ export default class TransactionForm extends Component {
 
                 <button
                     onClick={(e) => {
-                        handleSubmit(e, form, updateBudget, budget);
+                        e.preventDefault();
+                        handleSubmit(form, updateBudget, budget);
+                        form = resetForm(form);
                         onDone();
                     }}>
 
