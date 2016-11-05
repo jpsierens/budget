@@ -39,6 +39,68 @@ const resetForm = (form) => {
     return newForm;
 };
 
+const DateInput = () =>
+    <div>
+        <label>Date</label>
+        <input
+            type="date"
+            ref={(e) => { date = e; }} />;
+    </div>;
+
+const DescriptionInput = () =>
+    <div>
+        <label>Description</label>
+        <textarea
+            rows="10"
+            cols="50"
+            ref={(e) => { description = e; }} />
+    </div>;
+
+const AmountInput = () =>
+    <div>
+        <label>Amount</label>
+        <input
+            type="text"
+            ref={(e) => { amount = e; }} />
+    </div>;
+
+const ExpenseInput = () =>
+    <div>
+        <label style={{ display: 'inline' }}>Expense?</label>
+        <input
+            type="radio"
+            name="type"
+            value="expense"
+            defaultChecked
+            style={{ display: 'inline' }}
+            onClick={() => this.setState({ type: 'expense'})} />
+    </div>;
+
+const IncomeInput = () =>
+    <div>
+        <label style={{ display: 'inline' }}>Income?</label>
+        <input
+            type="radio"
+            name="type"
+            value="income"
+            style={{ display: 'inline' }}
+            onClick={() => this.setState({ type: 'income'})} />
+    </div>;
+    
+const CategoryInput = () =>
+    <div>
+        <label>Category</label>
+        <select
+            ref={(e) => { category = e; }}>
+
+            {transCats.map((t) => {
+                if (t.type !== type) return null;
+
+                return <option key={t._id} value={t.name}>{t.name}</option>;
+            })}
+        </select>
+    </div>;
+
 type Props = {
     budget: BudgetType,
     transCats: transCatType[],
@@ -50,58 +112,26 @@ const btnAddCatStyle = { display: 'block', marginBottom: '10px' };
 
 export default class TransactionForm extends Component {
     state = {
-        transCat: 'expense',
+        date: '',
+        description: '',
+        amount: '',
+        type: 'expense'
     };
 
     props: Props;
 
     render() {
         const { updateBudget, budget, onDone, transCats } = this.props;
-        const { transCat } = this.state;
-        let form = {};
+        const { date, description, amount, type } = this.state;
 
         return (
             <form className="transaction-form">
-                <label>Date</label>
-                <input
-                    type="date"
-                    ref={(e) => { form.date = e; }} />
-                <label>Description</label>
-                <textarea
-                    rows="10"
-                    cols="50"
-                    ref={(e) => { form.description = e; }} />
-                <label>Amount</label>
-                <input
-                    type="text"
-                    ref={(e) => { form.amount = e; }} />
-                <label style={{ display: 'inline' }}>Expense?</label>
-                <input
-                    type="radio"
-                    name="type"
-                    value="expense"
-                    defaultChecked
-                    style={{ display: 'inline' }}
-                    ref={(e) => { form.expense = e; }}
-                    onClick={() => this.setState({ transCat: 'expense'})} />
-                <label style={{ display: 'inline' }}>Income?</label>
-                <input
-                    type="radio"
-                    name="type"
-                    value="income"
-                    style={{ display: 'inline' }}
-                    ref={(e) => { form.income = e; }}
-                    onClick={() => this.setState({ transCat: 'income'})} />
-                <label>Category</label>
-                <select
-                    ref={(e) => { form.category = e; }}>
-
-                    {transCats.map((t) => {
-                        if (t.type !== transCat) return null;
-
-                        return <option key={t._id} value={t.name}>{t.name}</option>;
-                    })}
-                </select>
+                { DateInput }
+                { DescriptionInput }
+                { AmountInput }
+                { ExpenseInput }
+                { IncomeInput }
+                { CategoryInput }
 
                 <button
                     onClick={(e)=> {
