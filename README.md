@@ -17,3 +17,15 @@ This app uses Mongo. Download and follow the installation steps. When all is don
 ```
 mongod
 ```
+
+## Stuff you can learn here
+* Mongoose and how to model data
+* Making APIs with Node + Express
+* React + Redux
+* Redux Sagas
+* Async functions (app/api dir)
+* ES2015+
+* Webpack
+* Tests with Mocha + Expect
+* React native integration (coming soon)
+* And hopefully a way to manage your money :)
