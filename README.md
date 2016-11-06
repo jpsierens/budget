@@ -3,20 +3,20 @@
 
 :construction: Under construction :construction:
 
-Testing out flow in this project, but I'm not liking this issue https://github.com/facebook/flow/issues/869
-
 ## Run
-```
-npm start
-```
-
-This starts a server on localhost:3000, head over there to see the app. It also starts the API on port 3001 which is how the data gets saved. 
 
 This app uses Mongo. Download and follow the installation steps. When all is done start the mongo service with:
 
 ```
 mongod
 ```
+
+Then start the app on another tab with:
+```
+npm start
+```
+
+This runs a server on localhost:3000, head over there to see the app. It also runs the API on port 3001 which is how the data gets CRUD. 
 
 ## Stuff you can learn here
 * Mongoose and how to model data
@@ -26,6 +26,7 @@ mongod
 * Async functions (app/api dir)
 * ES2015+
 * Webpack
+* Flowtype
 * Tests with Mocha + Expect
 * React native integration (coming soon)
 * And hopefully a way to manage your money :)
