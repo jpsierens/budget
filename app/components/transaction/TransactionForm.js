@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { BudgetType, transCatType } from '../types';
-import handleUpdateItem from '../helpers/handleUpdateItem';
+import { BudgetType, transCatType } from '../../types';
+import handleUpdateItem from '../../helpers/handleUpdateItem';
 
 import DateInput from './DateInput';
 import TypeInput from './TypeInput';

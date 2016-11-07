@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import { transCatType } from '../types';
+import { transCatType } from '../../types';
 
 type Props = {
     type: string,

@@ -1,5 +1,5 @@
 import React from 'react';
-import { BudgetType } from '../types';
+import { BudgetType } from '../../types';
 import TransactionForm from './TransactionForm';
 import Transaction from './Transaction';
 

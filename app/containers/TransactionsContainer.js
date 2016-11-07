@@ -1,6 +1,6 @@
 // @flow
 import { connect } from 'react-redux';
-import Transactions from '../components/Transactions';
+import Transactions from '../components/transaction';
 
 const mapStateToProps = (state, props) => {
     return {
