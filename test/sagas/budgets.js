@@ -1,9 +1,9 @@
 import "babel-polyfill";
 import expect from "expect";
 import { put, call } from 'redux-saga/effects'
-import * as sagas from "../app/actions/sagas";
-import * as types from "../app/actions/types";
-import { postBudget, deleteBudget, putBudget } from '../app/api/budgets';
+import * as sagas from "../../app/actions/sagas";
+import * as types from "../../app/actions/types";
+import { postBudget, deleteBudget, putBudget } from '../../app/api/budgets';
 
 describe('redux sagas', () => {
     const budgetModel = {
