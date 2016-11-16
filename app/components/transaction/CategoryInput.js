@@ -16,7 +16,7 @@ const CategoryInput = ({ onInputChange, transCats, type }: Props) => {
             <label>Category</label>
             <select
                 ref={(e) => { category = e; }}
-                onChange={() => 
+                onChange={() =>
                     onInputChange({ category: category.value })
                 }>
 

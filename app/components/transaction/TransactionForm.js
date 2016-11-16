@@ -83,7 +83,7 @@ export default class TransactionForm extends Component {
                 <TypeInput onInputChange={this.handleInputChange} type="income" />
                 <CategoryInput
                     type={this.state.type}
-                    onInputChange={this.handleInputChange} 
+                    onInputChange={this.handleInputChange}
                     transCats={transCats} />
 
                 <button
