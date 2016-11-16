@@ -9,15 +9,6 @@ const mapStateToProps = (state, props) => {
     };
 };
 
-const mapDispatchToProps = () => {
-    return {
-
-    };
-};
-
-const TransactionsContainer = connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(Transactions);
+const TransactionsContainer = connect(mapStateToProps)(Transactions);
 
 export default TransactionsContainer;
