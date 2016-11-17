@@ -9,7 +9,12 @@ describe('sync actions', () => {
         updatedAt: "2016-09-11T09:21:57.834Z",
         note: "Testing budgets",
         completed: false
-    }
+    };
+    const transCat = {
+        _id: "57d3ce8b66e5e92c16bc6528",
+        name: "test the transcats",
+        type: "expense"
+    };
 
     describe('addBudget', () => {
         it('should create an action to add a budget', () => {
@@ -59,6 +64,16 @@ describe('sync actions', () => {
             expect(actions.updateBudget(id, updates))
                 .toEqual(expectedAction);
         })
+    });
+
+    describe('addTransCat', () => {
+        it ('should create an action to add a transaction category', () => {
+            const expectedAction = {
+                type: types.ADD_TRANSCAT_CLICK,
+                data: transCat
+            };
+            expect(actions.addTransCat(transCat)).toEqual(expectedAction);
+        });
     });
 
 });

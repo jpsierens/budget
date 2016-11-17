@@ -1,6 +1,6 @@
 // @flow
 import * as types from './types';
-import { addBudgetType, BudgetType, TransactionType } from '../types';
+import { addBudgetType, BudgetType, TransactionType, transCatType } from '../types';
 
 export function addBudget(budget: addBudgetType) {
     return {
@@ -38,4 +38,11 @@ export function addTransaction(transaction: TransactionType) {
         type: types.ADD_TRANSACTION_CLICK,
         data: transaction
     };
+}
+
+export function addTransCat(category: transCatType) {
+    return {
+        type: types.ADD_TRANSCAT_CLICK,
+        data: category
+    }
 }
