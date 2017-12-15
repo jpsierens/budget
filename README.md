@@ -11,12 +11,12 @@ This app uses Mongo. Download and follow the installation steps. When all is don
 mongod
 ```
 
-Then start the app on another tab with:
+Then start the app on another terminal tab with:
 ```
 npm start
 ```
 
-This runs a server on ```localhost:3000```, head over there to see the app. It also runs the API on port 3001 which is how the data gets CRUD. 
+This runs a server on ```localhost:3000```, head over there to see the app. It also runs the API on port 3001 which is how the data gets CRUD.
 
 ## Stuff you can learn here
 * Mongoose and how to model data
