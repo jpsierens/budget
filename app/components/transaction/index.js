@@ -26,6 +26,9 @@ class Transactions extends React.Component {
     render() {
         const { create } = this.state;
         const { budget } = this.props;
+        let expenses = 0;
+        let revenues = 0;
+        let total = 0;
         const btnCreate = (<button
             className="btn-create"
             onClick={() => { this.handleCreateClick(); }}>
@@ -52,9 +55,16 @@ class Transactions extends React.Component {
             return 0;
         });
 
-        const transactions = sortedTransactions.map((t) => (
-            <Transaction {...t} key={t._id} />
-        ));
+        const transactions = sortedTransactions.map((t) => {
+            if (t.type === 'expense') {
+                expenses += +t.amount;
+            } else {
+                revenues += +t.amount;
+            }
+            return <Transaction {...t} key={t._id} />;
+        });
+
+        total = revenues - expenses;
 
         return (
             <section className="transactions">
@@ -68,6 +78,9 @@ class Transactions extends React.Component {
 
                 <div className="transaction-list">
                     { transactions }
+                    Total: { total }
+                    Revenues: { revenues }
+                    Expenses: { expenses }
                 </div>
 
                 { (create) ?
@@ -82,4 +95,3 @@ class Transactions extends React.Component {
 }
 
 export default Transactions;
-

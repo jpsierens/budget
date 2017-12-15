@@ -44,5 +44,5 @@ export function addTransCat(category: transCatType) {
     return {
         type: types.ADD_TRANSCAT_CLICK,
         data: category
-    }
+    };
 }
