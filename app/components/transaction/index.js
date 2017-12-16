@@ -2,6 +2,7 @@ import React from 'react';
 import { BudgetType } from '../../types';
 import TransactionForm from './TransactionForm';
 import Transaction from './Transaction';
+import TransactionTotals from './TransactionTotals';
 
 type Props = {
     budget: BudgetType,
@@ -78,10 +79,9 @@ class Transactions extends React.Component {
 
                 <div className="transaction-list">
                     { transactions }
-                    Total: { total }
-                    Revenues: { revenues }
-                    Expenses: { expenses }
                 </div>
+
+                <TransactionTotals expenses={expenses} total={total} revenues={revenues} />
 
                 { (create) ?
                     <TransactionForm onDone={this.handleDiscardClick.bind(this)} {...this.props} />

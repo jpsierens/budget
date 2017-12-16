@@ -82,7 +82,7 @@ module.exports = {
             test: /\.scss$/,
             // we extract the styles into their own .css file instead of having
             // them inside the js.
-            loader: ExtractTextPlugin.extract('style', 'css!postcss!sass')
+            loader: ExtractTextPlugin.extract('style', 'css?modules&localIdentName=[name]---[local]---[hash:base64:5]!postcss!sass')
         },{
             test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
             loader: "url-loader?limit=10000&minetype=application/font-woff"
