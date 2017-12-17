@@ -1,19 +1,19 @@
 import React from 'react';
 import { root, element } from './style.module.scss';
 
+import parseStrToFixed from '../../../helpers/parseStrToFixed';
+
 type Props = {
     total: string,
     revenues: string,
     expenses: string
 };
 
-console.log(element);
-
 const TransactionTotals = ({ total, revenues, expenses } : Props) =>
 	<div className={root}>
-		<span className={element}>Total: { total }</span>
-		<span className={element}>Revenues: { revenues }</span>
-		<span className={element}>Expenses: { expenses }</span>
+		<span className={element}>Total: { parseStrToFixed(total, 2) }</span>
+		<span className={element}>Revenues: { parseStrToFixed(revenues, 2) }</span>
+		<span className={element}>Expenses: { parseStrToFixed(expenses, 2) }</span>
 	</div>;
 
 export default TransactionTotals;
