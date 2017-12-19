@@ -7,10 +7,11 @@ const BudgetSchema = new mongoose.Schema({
   note: { type: String, default: '' },
   updatedAt: { type: Date, default: Date.now },
   transactions: [{
-    expense: Boolean,
-    amount: Number,
+    type: { type: String, default: 'expense' },
+    amount: String,
     date: String,
-    description: String
+    description: String,
+    category: String
   }]
 });
 

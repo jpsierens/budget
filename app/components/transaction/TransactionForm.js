@@ -7,6 +7,7 @@ import TypeInput from './TypeInput';
 import AmountInput from './AmountInput';
 import CategoryInput from './CategoryInput';
 import DescriptionInput from './DescriptionInput';
+import { DEFAULT_CATEGORY } from '../../rules';
 
 const filterInvalids = (form) => {
     return Object.keys(form).filter((key) => {
@@ -30,6 +31,10 @@ const handleSubmit = (form, updateBudget, budget) => {
     // check for invalids
     if (invalids.length) {
         return alert('Please fill all fields');
+    }
+
+    if (formValues.category === '') {
+        formValues.category = DEFAULT_CATEGORY;
     }
 
     return handleUpdateItem(updateBudget, _id, {
