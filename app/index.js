@@ -7,6 +7,7 @@ import configureStore from './store/configureStore';
 import Root from './containers/Root';
 import { getInitialState } from './api';
 import './styles/main.scss';
+import './assets/fonts/icomoon/style.scss';
 
 getInitialState().then((state) => {
     const store = configureStore(state);

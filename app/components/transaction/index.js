@@ -1,7 +1,7 @@
 import React from 'react';
 import { BudgetType } from '../../types';
 import TransactionForm from './TransactionForm';
-import Transaction from './Transaction';
+import Transaction from './transaction';
 import TransactionTotals from './TransactionTotals';
 
 type Props = {

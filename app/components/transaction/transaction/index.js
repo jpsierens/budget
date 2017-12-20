@@ -1,6 +1,6 @@
 import React from 'react';
 
-import parseStrToFixed from '../../helpers/parseStrToFixed';
+import parseStrToFixed from '../../../helpers/parseStrToFixed';
 
 type Props = {
 	date: string,
@@ -14,6 +14,7 @@ const Transaction = ({ date, description, amount, isDragging } = Props) =>
         <div>{ date }</div>
         <div>{ description }</div>
         <div>{ parseStrToFixed(amount, 2) }</div>
+				<i className="icon-edit"></i>
     </div>;
 
 export default Transaction;

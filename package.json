@@ -57,6 +57,7 @@
     "eslint-plugin-react": "^5.0.1",
     "expect": "^1.20.2",
     "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^1.1.6",
     "flow-bin": "^0.32.0",
     "html-webpack-plugin": "^2.16.1",
     "jest": "16.0.2",

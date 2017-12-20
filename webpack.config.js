@@ -55,15 +55,17 @@ module.exports = {
                 loader: 'json'
             },
             {
-                  test: /\.module.scss$/,
-                  loader: 'style!css?modules&sourceMap&localIdentName=[local]___[hash:base64:5]!sass'
+                test: /\.module.scss$/,
+                loader: 'style!css?modules&sourceMap&localIdentName=[local]___[hash:base64:5]!sass'
             },
             {
-                  test: /^((?!\.module).)*scss$/,
-                  loader: 'style!css!sass'
+                test: /^((?!\.module).)*scss$/,
+                loader: 'style!css!sass'
             },
-            { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "url-loader?limit=10000&minetype=application/font-woff" },
-            { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "file-loader" }
+            {
+                test: /\.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+                loader: 'file-loader?name=fonts/[name].[ext]'
+            }
         ]
     }
 };
