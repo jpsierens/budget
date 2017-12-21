@@ -5,10 +5,11 @@ export type addBudgetType = {
 
 export type TransactionType = {
     _id: string,
-    expense: boolean,
+    type: boolean,
     amount: number,
     date: string,
-    description: string
+    description: string,
+    category: string
 };
 
 export type BudgetType = {

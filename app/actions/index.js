@@ -40,6 +40,14 @@ export function addTransaction(transaction: TransactionType) {
     };
 }
 
+
+export function updateTransaction(transaction: TransactionType) {
+    return {
+        type: types.UPDATE_TRANSACTION_CLICK,
+        data: transaction
+    };
+}
+
 export function addTransCat(category: transCatType) {
     return {
         type: types.ADD_TRANSCAT_CLICK,

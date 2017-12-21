@@ -11,7 +11,8 @@ type Props = {
 
 class Transactions extends React.Component {
     state = {
-        create: false
+        create: false,
+        transactionToUpdate: null
     };
 
     props: Props;
@@ -24,8 +25,12 @@ class Transactions extends React.Component {
         this.setState({ create: false });
     }
 
+    updateTransaction(t) {
+        this.setState({ create: false, transactionToUpdate: t });
+    }
+
     render() {
-        const { create } = this.state;
+        const { create, transactionToUpdate } = this.state;
         const { budget } = this.props;
         let expenses = 0;
         let revenues = 0;
@@ -62,7 +67,12 @@ class Transactions extends React.Component {
             } else {
                 revenues += +t.amount;
             }
-            return <Transaction {...t} key={t._id} />;
+            return (
+              <Transaction
+                  updateTransaction={this.updateTransaction.bind(this)}
+                  {...t}
+                  key={t._id} />
+            );
         });
 
         total = revenues - expenses;
@@ -71,7 +81,7 @@ class Transactions extends React.Component {
             <section className="transactions">
                 <h2>Transactions</h2>
 
-                <div className="transaction">
+                <div className="transaction-table-row">
                     <div>DATE</div>
                     <div>DESCRIPTION</div>
                     <div>AMOUNT</div>
@@ -84,7 +94,10 @@ class Transactions extends React.Component {
                 <TransactionTotals expenses={expenses} total={total} revenues={revenues} />
 
                 { (create) ?
-                    <TransactionForm onDone={this.handleDiscardClick.bind(this)} {...this.props} />
+                    <TransactionForm
+                      transactionToUpdate={transactionToUpdate ? transactionToUpdate : null}
+                      onDone={this.handleDiscardClick.bind(this)}
+                      {...this.props} />
                     :
                     null
                 }

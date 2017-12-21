@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BudgetType, transCatType } from '../../types';
+import { BudgetType, transCatType, TransactionType } from '../../types';
 import handleUpdateItem from '../../helpers/handleUpdateItem';
 
 import DateInput from './DateInput';
@@ -45,6 +45,7 @@ const handleSubmit = (form, updateBudget, budget) => {
 type Props = {
     budget: BudgetType,
     transCats: transCatType[],
+    transactionToUpdate: TransactionType,
     updateBudget: () => void,
     onDone: () => void
 };
@@ -77,15 +78,26 @@ export default class TransactionForm extends Component {
     }
 
     render() {
-        const { updateBudget, budget, onDone, transCats } = this.props;
+        const { updateBudget, budget, onDone, transCats, transactionToUpdate } = this.props;
+        const update = transactionToUpdate;
 
         return (
             <form className="transaction-form">
-                <DateInput onInputChange={this.handleInputChange} />
-                <DescriptionInput onInputChange={this.handleInputChange} />
-                <AmountInput onInputChange={this.handleInputChange} />
-                <TypeInput onInputChange={this.handleInputChange} type="expense" />
-                <TypeInput onInputChange={this.handleInputChange} type="income" />
+                <DateInput
+                    update={update ? update.date : null}
+                    onInputChange={this.handleInputChange} />
+                <DescriptionInput
+                    update={update ? update.description : null}
+                    onInputChange={this.handleInputChange} />
+                <AmountInput
+                    update={update ? update.amount : null}
+                    onInputChange={this.handleInputChange} />
+                <TypeInput
+                    update={update ? update.type : null}
+                    onInputChange={this.handleInputChange} type="expense" />
+                <TypeInput
+                    update={update ? update.type : null}
+                    onInputChange={this.handleInputChange} type="income" />
                 <CategoryInput
                     type={this.state.type}
                     onInputChange={this.handleInputChange}
