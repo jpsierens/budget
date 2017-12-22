@@ -26,7 +26,7 @@ class Transactions extends React.Component {
     }
 
     updateTransaction(t) {
-        this.setState({ create: false, transactionToUpdate: t });
+        this.setState({ create: true, transactionToUpdate: t });
     }
 
     render() {
@@ -70,7 +70,7 @@ class Transactions extends React.Component {
             return (
               <Transaction
                   updateTransaction={this.updateTransaction.bind(this)}
-                  {...t}
+                  data={t}
                   key={t._id} />
             );
         });

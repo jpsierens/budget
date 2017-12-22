@@ -67,6 +67,12 @@ export default class TransactionForm extends Component {
         this.handleInputChange = this.handleInputChange.bind(this);
     }
 
+    componentWillMount() {
+        if (this.props.transactionToUpdate) {
+            this.setState({ ...this.props.transactionToUpdate });
+        }
+    }
+
     props: Props;
 
     handleInputChange(changes) {
@@ -78,25 +84,25 @@ export default class TransactionForm extends Component {
     }
 
     render() {
-        const { updateBudget, budget, onDone, transCats, transactionToUpdate } = this.props;
-        const update = transactionToUpdate;
+        const { date, description, amount, type } = this.state;
+        const { updateBudget, budget, onDone, transCats } = this.props;
 
         return (
             <form className="transaction-form">
                 <DateInput
-                    update={update ? update.date : null}
+                    value={date}
                     onInputChange={this.handleInputChange} />
                 <DescriptionInput
-                    update={update ? update.description : null}
+                    value={description}
                     onInputChange={this.handleInputChange} />
                 <AmountInput
-                    update={update ? update.amount : null}
+                    value={amount}
                     onInputChange={this.handleInputChange} />
                 <TypeInput
-                    update={update ? update.type : null}
+                    value={type}
                     onInputChange={this.handleInputChange} type="expense" />
                 <TypeInput
-                    update={update ? update.type : null}
+                    value={type}
                     onInputChange={this.handleInputChange} type="income" />
                 <CategoryInput
                     type={this.state.type}

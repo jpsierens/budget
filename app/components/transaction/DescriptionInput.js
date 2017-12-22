@@ -1,7 +1,12 @@
 // @flow
 import React from 'react';
 
-const DescriptionInput = ({ onInputChange } : { onInputChange: () => void }) => {
+type Props = {
+  value: String,
+  onInputChange: () => void
+}
+
+const DescriptionInput = ({ onInputChange, value } : Props) => {
     let input;
 
     return (
@@ -11,6 +16,7 @@ const DescriptionInput = ({ onInputChange } : { onInputChange: () => void }) => 
                 rows="10"
                 cols="50"
                 ref={(e) => { input = e; }}
+                value={value}
                 onChange={() =>
                     onInputChange({ description: input.value })
                 }/>

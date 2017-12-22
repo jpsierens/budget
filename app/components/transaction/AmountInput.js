@@ -1,7 +1,12 @@
 // @flow
 import React from 'react';
 
-const AmountInput = ({ onInputChange } : { onInputChange: () => void }) => {
+type Props = {
+  value: String,
+  onInputChange: () => void
+}
+
+const AmountInput = ({ onInputChange, value } : Props) => {
     let input;
 
     return (
@@ -10,6 +15,7 @@ const AmountInput = ({ onInputChange } : { onInputChange: () => void }) => {
             <input
                 type="text"
                 ref={(e) => { input = e; }}
+                value={value}
                 onChange={() =>
                     onInputChange({ amount: input.value })
                 }/>

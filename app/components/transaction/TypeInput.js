@@ -2,17 +2,19 @@
 import React from 'react';
 
 type Props = {
-    type: string,
+    value: String,
+    type: String,
     onInputChange: () => void
 }
 
-const TypeInput = ({ onInputChange, type } : Props) =>
+const TypeInput = ({ onInputChange, type, value } : Props) =>
     <div>
         <label style={{ display: 'inline' }}>{ type }?</label>
         <input
             type="radio"
             name="type"
             value={ type }
+            checked={value === type ? true : false}
             style={{ display: 'inline' }}
             onChange={() => onInputChange({
                 type

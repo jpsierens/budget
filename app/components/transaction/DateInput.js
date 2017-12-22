@@ -1,7 +1,12 @@
 // @flow
 import React from 'react';
 
-const DateInput = ({ onInputChange } : { onInputChange: () => void }) => {
+type Props = {
+  value: String,
+  onInputChange: () => void
+}
+
+const DateInput = ({ onInputChange, value } : Props) => {
     let input;
 
     return (
@@ -10,6 +15,7 @@ const DateInput = ({ onInputChange } : { onInputChange: () => void }) => {
             <input
                 type="date"
                 ref={(e) => { input = e; }}
+                value={value}
                 onChange={() =>
                     onInputChange({ date: input.value })
                 }/>
