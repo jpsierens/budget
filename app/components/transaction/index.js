@@ -18,11 +18,11 @@ class Transactions extends React.Component {
     props: Props;
 
     handleCreateClick() {
-        this.setState({ create: true });
+        this.setState({ create: true, transactionToUpdate: null });
     }
 
     handleDiscardClick() {
-        this.setState({ create: false });
+        this.setState({ create: false, transactionToUpdate: null });
     }
 
     updateTransaction(t) {

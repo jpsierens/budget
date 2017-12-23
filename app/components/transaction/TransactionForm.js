@@ -37,8 +37,13 @@ const handleSubmit = (form, updateBudget, budget) => {
         formValues.category = DEFAULT_CATEGORY;
     }
 
+    // filter out same ID transactions (happens when updating a transaction)
+    const filteredTransactions = transactions.filter(t => t._id !== form._id);
+
+    console.log(filteredTransactions);
+
     return handleUpdateItem(updateBudget, _id, {
-        transactions: [...transactions, formValues]
+        transactions: [...filteredTransactions, formValues]
     });
 };
 
