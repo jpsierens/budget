@@ -15,35 +15,30 @@ const filterInvalids = (form) => {
     });
 };
 
-const getFormValues = (form) => {
-    const formValues = {};
-    Object.keys(form).forEach((key) => {
-        formValues[key] = form[key];
-    });
-    return formValues;
-};
-
 const handleSubmit = (form, updateBudget, budget) => {
     const { _id, transactions } = budget;
     const invalids = filterInvalids(form);
-    const formValues = getFormValues(form);
+
+    console.log(form);
 
     // check for invalids
     if (invalids.length) {
         return alert('Please fill all fields');
     }
 
-    if (formValues.category === '') {
-        formValues.category = DEFAULT_CATEGORY;
+    if (form.category === '') {
+        form.category = DEFAULT_CATEGORY;
     }
 
     // filter out same ID transactions (happens when updating a transaction)
-    const filteredTransactions = transactions.filter(t => t._id !== form._id);
-
-    console.log(filteredTransactions);
+    // if its an update, _id will be available (comes from DB)
+    const filteredTransactions = (form._id) ?
+        transactions.filter(t => t._id !== form._id)
+        :
+        transactions;
 
     return handleUpdateItem(updateBudget, _id, {
-        transactions: [...filteredTransactions, formValues]
+        transactions: [...filteredTransactions, form]
     });
 };
 
