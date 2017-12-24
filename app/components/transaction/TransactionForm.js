@@ -31,8 +31,7 @@ const handleSubmit = (form, updateBudget, budget) => {
     }
 
     // filter out same ID transactions (happens when updating a transaction)
-    // if its an update, _id will be available (comes from DB)
-    const filteredTransactions = (form._id) ?
+    const filteredTransactions = (form.isUpdate) ?
         transactions.filter(t => t._id !== form._id)
         :
         transactions;
@@ -61,7 +60,8 @@ export default class TransactionForm extends Component {
             description: '',
             amount: '',
             type: 'expense',
-            category: ''
+            category: '',
+            isUpdate: false
         };
         this.state = { ...this.initState };
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -69,7 +69,7 @@ export default class TransactionForm extends Component {
 
     componentWillMount() {
         if (this.props.transactionToUpdate) {
-            this.setState({ ...this.props.transactionToUpdate });
+            this.setState({ ...this.props.transactionToUpdate, isUpdate: true });
         }
     }
 
