@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { BudgetType, transCatType, TransactionType } from '../../types';
+import { BudgetType, TransactionType } from '../../types';
 import handleUpdateItem from '../../helpers/handleUpdateItem';
 
 import DateInput from './DateInput';
 import TypeInput from './TypeInput';
 import AmountInput from './AmountInput';
-import CategoryInput from './CategoryInput';
+import Categories from '../../containers/CategoryContainer';
 import DescriptionInput from './DescriptionInput';
 import { DEFAULT_CATEGORY } from '../../rules';
 
@@ -18,8 +18,6 @@ const filterInvalids = (form) => {
 const handleSubmit = (form, updateBudget, budget) => {
     const { _id, transactions } = budget;
     const invalids = filterInvalids(form);
-
-    console.log(form);
 
     // check for invalids
     if (invalids.length) {
@@ -43,13 +41,10 @@ const handleSubmit = (form, updateBudget, budget) => {
 
 type Props = {
     budget: BudgetType,
-    transCats: transCatType[],
     transactionToUpdate: TransactionType,
     updateBudget: () => void,
     onDone: () => void
 };
-
-const btnAddCatStyle = { display: 'block', marginBottom: '10px' };
 
 export default class TransactionForm extends Component {
 
@@ -85,7 +80,7 @@ export default class TransactionForm extends Component {
 
     render() {
         const { date, description, amount, type } = this.state;
-        const { updateBudget, budget, onDone, transCats } = this.props;
+        const { updateBudget, budget, onDone } = this.props;
 
         return (
             <form className="transaction-form">
@@ -104,18 +99,8 @@ export default class TransactionForm extends Component {
                 <TypeInput
                     value={type}
                     onInputChange={this.handleInputChange} type="income" />
-                <CategoryInput
-                    type={this.state.type}
-                    onInputChange={this.handleInputChange}
-                    transCats={transCats} />
 
-                <button
-                    onClick={(e)=> {
-                        e.preventDefault();
-                    }}
-                    style={ btnAddCatStyle }>
-                    add more categories
-                </button>
+                <Categories />
 
                 <button
                     onClick={(e) => {

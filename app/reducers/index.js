@@ -34,7 +34,7 @@ const budgets = (state = [], action) => {
     }
 };
 
-const transCats = (state = [], action) => {
+const categories = (state = [], action) => {
     switch (action.type) {
         default:
             return state;
@@ -43,7 +43,7 @@ const transCats = (state = [], action) => {
 
 const rootReducer = combineReducers({
     budgets,
-    transCats,
+    categories,
     routing
 });
 

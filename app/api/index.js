@@ -1,14 +1,13 @@
 import { getBudgets } from './budgets';
-import { getTransCats } from './transCats';
+import { getCategories } from './categories';
 
 export async function getInitialState() {
     try {
         const budgets = await getBudgets();
-        const transCats = await getTransCats();
+        const categories = await getCategories();
 
-        return { budgets, transCats };
+        return { budgets, categories };
     } catch (e) {
         throw e;
     }
 }
-

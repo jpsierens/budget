@@ -1,6 +1,6 @@
 // @flow
 import * as types from './types';
-import { addBudgetType, BudgetType, TransactionType, transCatType } from '../types';
+import { addBudgetType, BudgetType, TransactionType } from '../types';
 
 export function addBudget(budget: addBudgetType) {
     return {
@@ -48,9 +48,24 @@ export function updateTransaction(transaction: TransactionType) {
     };
 }
 
-export function addTransCat(category: transCatType) {
+export function addCategory(cat: Object) {
     return {
-        type: types.ADD_TRANSCAT_CLICK,
-        data: category
+        type: types.ADD_CATEGORY_CLICK,
+        data: cat
+    };
+}
+
+export function removeCategory(id: string) {
+    return {
+        type: types.REMOVE_CATEGORY_CLICK,
+        id
+    };
+}
+
+export function updateCategory(id: string, updates: Object) {
+    return {
+        type: types.UPDATE_CATEGORY_CLICK,
+        updates,
+        id
     };
 }
