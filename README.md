@@ -1,5 +1,5 @@
 # budget ![build status](https://travis-ci.org/jpsierens/budget.svg?branch=master)
-> App for managing budgets
+> App for managing budgets.
 
 :construction: Under construction :construction:
 
