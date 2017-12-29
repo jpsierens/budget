@@ -42,6 +42,7 @@ const handleSubmit = (form, updateBudget, budget) => {
 type Props = {
     budget: BudgetType,
     transactionToUpdate: TransactionType,
+    indexParam: String,
     updateBudget: () => void,
     onDone: () => void
 };
@@ -80,7 +81,7 @@ export default class TransactionForm extends Component {
 
     render() {
         const { date, description, amount, type } = this.state;
-        const { updateBudget, budget, onDone } = this.props;
+        const { updateBudget, budget, onDone, indexParam } = this.props;
 
         return (
             <form className="transaction-form">
@@ -100,7 +101,7 @@ export default class TransactionForm extends Component {
                     value={type}
                     onInputChange={this.handleInputChange} type="income" />
 
-                <Categories />
+                <Categories indexParam={indexParam} />
 
                 <button
                     onClick={(e) => {

@@ -3,17 +3,18 @@ import React from 'react';
 import { withRouter } from 'react-router';
 import { BudgetType } from '../types';
 import BudgetEdit from './BudgetEdit';
-import TransactionsContainer from '../containers/TransactionsContainer';
+import Transactions from '../components/transactions/transaction';
 
 type Props = {
     budget: BudgetType,
     onRemove: () => void,
     updateBudget: () => void,
+    indexParam: String,
     router: Object
 };
 
 const BudgetDetail = (props: Props) => {
-    const { budget, onRemove, router, updateBudget } = props;
+    const { budget, onRemove, router, updateBudget, indexParam } = props;
     const { _id, completed } = budget;
 
     return (
@@ -22,7 +23,7 @@ const BudgetDetail = (props: Props) => {
 
             <hr />
 
-            <TransactionsContainer budget={budget} updateBudget={updateBudget} />
+            <Transactions indexParam={indexParam} budget={budget} updateBudget={updateBudget} />
 
             <span
                 className="close-budget"

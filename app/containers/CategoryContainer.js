@@ -18,10 +18,10 @@ const Categories = () =>
 
 
 const mapStateToProps = (state, props) => {
-    const { index } = props.params;
+    const { indexParam } = props.indexParam;
 
     return {
-        categories: state.categories[index]
+        categories: state.categories[indexParam]
     };
 };
 

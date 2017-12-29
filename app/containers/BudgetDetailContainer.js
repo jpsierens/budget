@@ -7,6 +7,7 @@ const mapStateToProps = (state, props) => {
     const { index } = props.params;
 
     return {
+        indexParam: index,
         budget: state.budgets[index]
     };
 };
