@@ -100,7 +100,7 @@ export default class TransactionForm extends Component {
                     value={type}
                     onInputChange={this.handleInputChange} type="income" />
 
-                <Categories />
+                <Categories onInputChange={this.handleInputChange} />
 
                 <button
                     onClick={(e) => {

@@ -2,23 +2,25 @@
 import React from 'react';
 
 type Props = {
-    categories: String[]
+    categories: String[],
+    onInputChange: () => void
 }
 
-const CategoryInput = ({ categories }: Props) => {
-    let category;
+const CategoryInput = ({ categories, onInputChange }: Props) => {
+    let input;
 
     return (
         <div>
             <label>Category</label>
             <select
-                ref={(e) => { category = e; }}
-                onChange={() =>
-                    console.log(category + ' add me to the transaction!')
-                }>
+                ref={(e) => { input = e; }}
+                onChange={() => {
+                    console.log(input.value);
+                    onInputChange({ category: input.value });
+                }}>
 
                 <option value="other">other</option>;
-                {categories.map((t) => {
+                { categories.map((t) => {
                     return <option key={t._id} value={t.name}>{t.name}</option>;
                 })}
             </select>

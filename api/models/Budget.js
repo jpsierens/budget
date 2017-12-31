@@ -11,7 +11,7 @@ const BudgetSchema = new mongoose.Schema({
     amount: String,
     date: String,
     description: String,
-    category: String
+    category: { type: String, default: 'other' }
   }]
 });
 

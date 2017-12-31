@@ -12,7 +12,7 @@ type Props = {
 const Transaction = ({ data, updateTransaction } = Props) =>
 	<div className={`${transaction} transaction-table-row`} >
         <div>{ data.date }</div>
-        <div>{ data.description }</div>
+        <div>{ data.description } - { data.category }</div>
         <div>{ parseStrToFixed(data.amount, 2) }</div>
 				<i
 						onClick={() => updateTransaction(data)}
