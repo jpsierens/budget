@@ -4,12 +4,15 @@ import { connect } from 'react-redux';
 // import { addCategory, removeCategory, updateCategory, moveCategory } from '../actions';
 import CategoryInput from '../components/categories/CategoryInput';
 
-const Categories = () =>
+type Props = {
+		categories: String[]
+};
+
+const Categories = ({ categories } : Props) =>
 		<div>
 				<CategoryInput
-						type={this.state.type}
+						categories={categories}
 						onInputChange={this.handleInputChange} />
-
 				<button
 						onClick={(e)=> e.preventDefault()}>
 						add more categories
@@ -17,11 +20,9 @@ const Categories = () =>
 		</div>;
 
 
-const mapStateToProps = (state, props) => {
-    const { indexParam } = props.indexParam;
-
+const mapStateToProps = (state) => {
     return {
-        categories: state.categories[indexParam]
+        categories: state.categories
     };
 };
 

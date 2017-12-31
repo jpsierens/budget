@@ -1,14 +1,11 @@
 // @flow
 import React from 'react';
-import { transCatType } from '../../types';
 
 type Props = {
-    type: string,
-    transCats: transCatType[],
-    onInputChange: () => void
+    categories: String[]
 }
 
-const CategoryInput = ({ onInputChange, transCats, type }: Props) => {
+const CategoryInput = ({ categories }: Props) => {
     let category;
 
     return (
@@ -17,12 +14,11 @@ const CategoryInput = ({ onInputChange, transCats, type }: Props) => {
             <select
                 ref={(e) => { category = e; }}
                 onChange={() =>
-                    onInputChange({ category: category.value })
+                    console.log(category + ' add me to the transaction!')
                 }>
 
-                {transCats.map((t) => {
-                    if (t.type !== type) return null;
-
+                <option value="other">other</option>;
+                {categories.map((t) => {
                     return <option key={t._id} value={t.name}>{t.name}</option>;
                 })}
             </select>

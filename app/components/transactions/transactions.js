@@ -1,12 +1,11 @@
 import React from 'react';
 import { BudgetType } from '../../types';
 import TransactionForm from './TransactionForm';
-import Transaction from './transaction';
+import Transaction from './transaction/transaction';
 import TransactionTotals from './TransactionTotals';
 
 type Props = {
     budget: BudgetType,
-    indexParam: String,
     updateBudget: () => void
 };
 
@@ -32,7 +31,7 @@ class Transactions extends React.Component {
 
     render() {
         const { create, transactionToUpdate } = this.state;
-        const { budget, indexParam } = this.props;
+        const { budget } = this.props;
         let expenses = 0;
         let revenues = 0;
         let total = 0;

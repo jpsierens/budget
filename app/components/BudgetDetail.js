@@ -3,7 +3,7 @@ import React from 'react';
 import { withRouter } from 'react-router';
 import { BudgetType } from '../types';
 import BudgetEdit from './BudgetEdit';
-import Transactions from '../components/transactions/transaction';
+import Transactions from '../components/transactions/transactions';
 
 type Props = {
     budget: BudgetType,
