@@ -1,13 +1,14 @@
 // @flow
 import React from 'react';
 import { connect } from 'react-redux';
-// import { addCategory, removeCategory, updateCategory, moveCategory } from '../actions';
+import { addCategory } from '../actions';
 import CategoryInput from '../components/categories/CategoryInput';
 import CategoryForm from '../components/categories/CategoryForm';
 
 type Props = {
 	categories: String[],
-	onInputChange: () => void
+	onInputChange: () => void,
+	onAddCategory: () => void,
 };
 
 class Categories extends React.Component {
@@ -24,7 +25,7 @@ class Categories extends React.Component {
 	}
 
 	render() {
-		const { categories, onInputChange } = this.props;
+		const { categories, onInputChange, onAddCategory } = this.props;
 
 		return (
 			<div>
@@ -32,7 +33,7 @@ class Categories extends React.Component {
 					categories={categories}
 					onInputChange={onInputChange} />
 			{ this.state.showForm ?
-				<CategoryForm />
+				<CategoryForm onAddCategory={onAddCategory} />
 				:
 				<button
 					onClick={this.showForm.bind(this)}>
@@ -51,9 +52,15 @@ const mapStateToProps = (state) => {
     };
 };
 
+const mapDispatchToProps = (dispatch) => {
+	return {
+		onAddCategory: c => dispatch(addCategory(c))
+	};
+};
+
 const CategoryContainer = connect(
     mapStateToProps,
-    null
+    mapDispatchToProps
 )(Categories);
 
 export default CategoryContainer;

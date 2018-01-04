@@ -7,9 +7,9 @@ import { postBudget, deleteBudget, putBudget } from '../api/budgets';
 import { postCategory, deleteCategory, putCategory } from '../api/categories';
 import { addBudgetActionType, removeBudgetActionType, updateBudgetActionType } from '../types';
 
-function* handleServerResponse(budget, success, failed, errorMsg, additional = {}) {
-    if (budget && budget.name) {
-        yield put(Object.assign({}, { type: success, budget }, additional));
+function* handleServerResponse(response, success, failed, errorMsg, additional = {}) {
+    if (response) {
+        yield put(Object.assign({}, { type: success, response }, additional));
     } else {
         yield put({ type: failed, error: errorMsg });
     }

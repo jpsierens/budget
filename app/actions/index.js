@@ -48,7 +48,7 @@ export function updateTransaction(transaction: TransactionType) {
     };
 }
 
-export function addCategory(cat: Object) {
+export function addCategory(cat: String) {
     return {
         type: types.ADD_CATEGORY_CLICK,
         data: cat

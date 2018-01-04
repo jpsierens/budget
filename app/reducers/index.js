@@ -6,10 +6,10 @@ import * as types from '../actions/types';
 const budgets = (state = [], action) => {
     switch (action.type) {
         case types.ADD_BUDGET_SUCCESS:
-            return [action.budget, ...state];
+            return [action.response, ...state];
 
         case types.REMOVE_BUDGET_SUCCESS:
-            return state.filter((t) => t._id !== action.budget._id );
+            return state.filter((t) => t._id !== action.response._id );
 
         case types.UPDATE_BUDGET_SUCCESS:
             const { updates, budget } = action;
@@ -25,7 +25,7 @@ const budgets = (state = [], action) => {
             newState.splice(action.dragIndex, 1);
             return [
                 ...newState.slice(0, action.hoverIndex),
-                action.budget,
+                action.response,
                 ...newState.slice(action.hoverIndex)
             ];
 
@@ -36,6 +36,8 @@ const budgets = (state = [], action) => {
 
 const categories = (state = [], action) => {
     switch (action.type) {
+        case types.ADD_CATEGORY_SUCCESS:
+            return [action.response, ...state];
         default:
             return state;
     }
