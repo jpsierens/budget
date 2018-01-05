@@ -19,7 +19,7 @@ class CategoryForm extends React.Component {
 
 	submit(e) {
 		e.preventDefault();
-		this.props.onAddCategory(this.state.category);
+		this.props.onAddCategory({ name: this.state.category });
 		this.setState({ category: '' });
 	}
 
